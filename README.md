@@ -38,15 +38,21 @@ The time chosen for analysis is the one-month period of August, 2019.
 
 ### Deliverable 1
 
-See `NYC_CitiBike_Challenge.ipynb` and `201908-citibike-tripdata_DATETIME.csv`
+See `NYC_CitiBike_Challenge.ipynb` and `Images/201908-citibike-tripdata_DATETIME_sample.png`
+
+Note: `201908-citibike-tripdata_DATETIME.csv` not uploaded to conserve disk space.
 
 ### Deliverable 2
 
-See Tableau Public Visualization
+See Tableau Public Visualization:
+
+[https://public.tableau.com/app/profile/tpapiernik/viz/Module_14_Challenge_NYC_Bikesharing/UserTripsbyGenderbyWeekday](https://public.tableau.com/app/profile/tpapiernik/viz/Module_14_Challenge_NYC_Bikesharing/UserTripsbyGenderbyWeekday "Tableau Public Visualization")
 
 ### Deliverable 3
 
 See Tableau Public Visualization
+
+[https://public.tableau.com/app/profile/tpapiernik/viz/Module_14_Challenge_NYC_Bikesharing/UserTripsbyGenderbyWeekday](https://public.tableau.com/app/profile/tpapiernik/viz/Module_14_Challenge_NYC_Bikesharing/UserTripsbyGenderbyWeekday "Tableau Public Visualization")
 
 ## Results
 
