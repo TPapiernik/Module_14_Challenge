@@ -60,7 +60,7 @@ users as well, this could yield some clues, but using the information currently 
 with latitude and longitude locations which do not correspond to any of the other latitude and longitude locations of the other 807 stations present in the corpus at the time of analysis.
 
 `start station latitude`, `start station longitude`, `end station latitude`, `end station longitude`: There are no NULL values, and as expected (or, hoped), all stations are present
-within the geographic bounds of the New York City Greater Metropolitan Area. It should be noted that during the time under consideration, there are end stations in New Jersey
+within the geographic bounds of the New York City Greater Metropolitan Area and nearby surrounding areas. It should be noted that during the time under consideration, there are end stations in New Jersey
 which are not being used as start stations, at least in this dataset. This could be rectified by comparing stations against the Jersey City dataset also hosted on the New York City
 City Bike Bikeshare website, to see if there are corresponding trips being taken from New Jersey into New York. This should be monitored and crosschecked to ensure that over time, all of
 New York City's Bicycles don't migrate to New Jersey without sufficient numbers of bicycles being brought back to take their place.
@@ -74,13 +74,26 @@ nature of the service for users aged 18 and over, one might expect that some min
 or Legal Guardian in their procurement of Bicycle Sharing Services, or if they desire to ride in New Jersey without wearing a helmet.
 
 On the upper end of the age spectrum, there are other issues of data reliability.  There are 983 entries during this period of users who would have been over 100 years old at the time of use,
-with the oldest reported birth year on record being 1885. There is a large cluster of users with a reported birth year of 1900 which would suggest that is being
+with the oldest reported birth year on record being 1885. There is a large cluster of 325 users with a reported birth year of 1900 which would suggest that '1900' is being
 populated as a default when the birth year has otherwise been left blank. Credence is further lent to this hypothesis according to the fact that there are no otherwise NULL values
 in the birth year corpus.
 
 Most of these errant values can likely be attributed to miskeying errors during data entry or transcription. Without implementing
 a more sophisticated date-checking mechanism, a simple cutoff to discourage an excessive amount of false entries would be to enforce
 years post-1900 on input.
+
+One other glaring instance of the unreliability of user-supplied data is the highly unusual number of users with a stated birth year of 1969, 237,533 of whom rented bikes in August. This represents
+over 10% of all rentals in this reported birth year alone. Just how drastic this differs from all other reported years can be seen here in Figure 1:
+
+**Figure 1: "Sixty-Nine, Bro"**
+![Figure 1](Images/birth_year.png "Figure 1")
+
+Schoolyard humor is evergreen, but should not be relied upon for robust data analysis. If `birth year` is to be used at all for any sort of analysis,
+records with a reported birth year of 1969 or such that would make the user over 100 years old at the time of rental should be disregarded.
+
+If the self-reported gender is to be trusted for 1969 spoofers (dubious, at best), the male instance appears roughly 3 times as frequently as the female instance, surprising no-one.
+
+Thankfully, the only other data field that appears to be user-supplied is `gender`; all other data fields are machine-generated.
 
 `bikeid`, `usertype`, `gender`: No NULL values present, no other obvious errors or inconsistencies identified.
 
@@ -91,29 +104,64 @@ years post-1900 on input.
 
 See `NYC_CitiBike_Challenge.ipynb` and `Images/201908-citibike-tripdata_DATETIME_sample.png`
 
-Note: `201908-citibike-tripdata_DATETIME.csv` not uploaded to conserve disk space.
+Note: `201908-citibike-tripdata_DATETIME.csv` not uploaded to conserve disk space (2,344,225 Lines; 459 MB).
 
-A Screenshot of a Sample of the Datetime converted datafile is shown here in Figure 1:
+A Screenshot of a Sample of the Datetime converted datafile is shown here in Figure 2:
 
-**Figure 1: Sample of `201908-citibike-tripdata_DATETIME_sample.png`<br>Highlighting the First Column in hours, minutes, seconds (HH:mm:ss)**
+**Figure 2: Sample of `201908-citibike-tripdata_DATETIME_sample.png`<br>Highlighting the First Column in hours, minutes, seconds (HH:mm:ss)**
 
-![Figure 1](Images/201908-citibike-tripdata_DATETIME_sample.png "Figure 1")
+![Figure 2](Images/201908-citibike-tripdata_DATETIME_sample.png "Figure 2")
 
 ### Deliverable 2
 
 See Tableau Public Visualization:
 
-[https://public.tableau.com/app/profile/tpapiernik/viz/Module_14_Challenge_NYC_Bikesharing/UserTripsbyGenderbyWeekday](https://public.tableau.com/app/profile/tpapiernik/viz/Module_14_Challenge_NYC_Bikesharing/UserTripsbyGenderbyWeekday "Tableau Public Visualization")
+[https://public.tableau.com/app/profile/tpapiernik/viz/Module_14_Challenge_NYC_Bikesharing/NYCBikesharingStory](https://public.tableau.com/app/profile/tpapiernik/viz/Module_14_Challenge_NYC_Bikesharing/NYCBikesharingStory "Tableau Public Visualization")
 
 ### Deliverable 3
 
 See Tableau Public Visualization
 
-[https://public.tableau.com/app/profile/tpapiernik/viz/Module_14_Challenge_NYC_Bikesharing/UserTripsbyGenderbyWeekday](https://public.tableau.com/app/profile/tpapiernik/viz/Module_14_Challenge_NYC_Bikesharing/UserTripsbyGenderbyWeekday "Tableau Public Visualization")
+[https://public.tableau.com/app/profile/tpapiernik/viz/Module_14_Challenge_NYC_Bikesharing/NYCBikesharingStory](https://public.tableau.com/app/profile/tpapiernik/viz/Module_14_Challenge_NYC_Bikesharing/NYCBikesharingStory "Tableau Public Visualization")
 
 ## Results
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquet iaculis lorem non sollicitudin. Fusce elementum ac elit finibus auctor. Curabitur orci sem, accumsan a diam sit amet, efficitur tristique velit.
+Below is a gallery of the visualizations generated in the Tableau Public Visualization File, along with a brief description of each below the figure.
+
+**Figure 3: Visualization 1**
+
+![Figure 3](Images/Viz_01_Checkout_Times.png "Figure 3")
+Description: (Goes Here)
+
+**Figure 4: Visualization 2**
+
+![Figure 4](Images/Viz_02_Checkout_Times_by_Gender.png "Figure 4")
+Description: (Goes Here)
+
+**Figure 5: Visualization 3**
+
+![Figure 5](Images/Viz_03_Trips_by_Weekday_per_Hour.png "Figure 5")
+Description: (Goes Here)
+
+**Figure 6: Visualization 4**
+
+![Figure 6](Images/Viz_04_Trips_by_Weekday_per_Hour_by_Gender.png "Figure 6")
+Description: (Goes Here)
+
+**Figure 7: Visualization 5**
+
+![Figure 7](Images/Viz_05_Trips_by_Gender_by_Week.png "Figure 7")
+Description: (Goes Here)
+
+**Figure 8: Visualization 6**
+
+![Figure 8](Images/Viz_06_Starting_and_Ending_Locations.png "Figure 8")
+Description: (Goes Here)
+
+**Figure 9: Visualization 7**
+
+![Figure 9](Images/Viz_0 "Figure 9")
+Description: (Goes Here)
 
 ## Summary
 
